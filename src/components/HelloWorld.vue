@@ -29,7 +29,7 @@ export default defineComponent({
 			console.log("ssss");
 		},
 		updateId () {
-			this.url = "https://q1.qlogo.cn/g?b=qq&s=140&nk="+this.Getid;
+			this.url = `https://q1.qlogo.cn/g?b=qq&s=140&nk=${this.Getid}`;
 		}
 	}
 })
