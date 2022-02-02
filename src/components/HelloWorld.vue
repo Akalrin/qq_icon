@@ -15,7 +15,7 @@ export default defineComponent({
 				hello:10,
 			},
 			url: <String|null>null,
-			Getid: null// it is a v-model
+			Getid: <String|null>null// it is a v-model
 		}
 	},
 	methods: {
@@ -26,10 +26,14 @@ export default defineComponent({
 		cove() {
 			//const invoke = window.__TAURI__.invoke
 			invoke('my_command', { message: 'Hello!' });
-			console.log("ssss");
+			//console.log("ssss");
 		},
 		updateId () {
-			this.url = `https://q1.qlogo.cn/g?b=qq&s=140&nk=${this.Getid}`;
+			if(this.Getid == "") {
+				this.url = null;
+			}else {
+				this.url = `https://q1.qlogo.cn/g?b=qq&s=140&nk=${this.Getid}`;
+			}
 		}
 	}
 })
