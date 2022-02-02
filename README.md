@@ -13,3 +13,4 @@ https://q1.qlogo.cn/g?b=qq&s=${size}&nk=${id}
 size = 0 | 40 | 100 | 140 = 0 
 
 id = qq
+
