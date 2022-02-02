@@ -1,9 +1,9 @@
 {
-  "name": "tauri-app",
+  "name": "newqq",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "tauri": "tauri"
   },
@@ -14,6 +14,8 @@
   "devDependencies": {
     "@tauri-apps/cli": "^1.0.0-beta.10",
     "@vitejs/plugin-vue": "^2.0.0",
-    "vite": "^2.7.2"
+    "typescript": "^4.4.4",
+    "vite": "^2.7.2",
+    "vue-tsc": "^0.29.8"
   }
 }

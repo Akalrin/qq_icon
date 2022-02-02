@@ -1,13 +1,13 @@
 {
   "package": {
-    "productName": "tauri-app",
+    "productName": "newqq",
     "version": "0.1.0"
   },
   "build": {
     "distDir": "../dist",
     "devPath": "http://localhost:3000",
-    "beforeDevCommand": "yarn dev",
-    "beforeBuildCommand": "yarn build"
+    "beforeDevCommand": "pnpm dev",
+    "beforeBuildCommand": "pnpm build"
   },
   "tauri": {
     "bundle": {
