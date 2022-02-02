@@ -2,6 +2,7 @@
 import { defineComponent} from 'vue'
 import { add, Mime} from "./add" 
 import { invoke } from '@tauri-apps/api/tauri'
+import {headpicture,grouppicture} from "../internal";
 export default defineComponent({
 	name: 'HelloWrold',
 	components: {},
@@ -15,7 +16,9 @@ export default defineComponent({
 				hello:10,
 			},
 			url: <String|null>null,
-			Getid: <String|null>null// it is a v-model
+			urlgroup: <String|null>null,
+			Getid: <String|null>null,// it is a v-model
+			GetGroup: <String|null>null// it is a v-model
 		}
 	},
 	methods: {
@@ -26,13 +29,22 @@ export default defineComponent({
 		cove() {
 			//const invoke = window.__TAURI__.invoke
 			invoke('my_command', { message: 'Hello!' });
-			//console.log("ssss");
+			console.log("ssss");
 		},
 		updateId () {
 			if(this.Getid == "") {
 				this.url = null;
 			}else {
-				this.url = `https://q1.qlogo.cn/g?b=qq&s=140&nk=${this.Getid}`;
+				//this.url = `https://q1.qlogo.cn/g?b=qq&s=140&nk=${this.Getid}`;
+				this.url = headpicture(this.Getid as string);
+			}
+		},
+		updateGroup () {
+			if(this.GetGroup == "") {
+				this.urlgroup = null;
+			}else {
+				//this.url = `https://q1.qlogo.cn/g?b=qq&s=140&nk=${this.Getid}`;
+				this.urlgroup = grouppicture(this.GetGroup as string);
 			}
 		}
 	}
@@ -50,6 +62,15 @@ export default defineComponent({
 		/> 
 		<button type="button" @click="updateId">confirm</button>
 	</p>
+	<p>
+		<strong>id:</strong>
+		<input
+			v-model="GetGroup"
+			id="group"
+			placeholder="Eg 123456789"
+		/> 
+		<button type="button" @click="updateGroup">confirm</button>
+	</p>
   <button type="button" @click="updateData">count is: {{ count.hello }}</button>
   <button type="button" @click="cove">cove</button>
   <p>
@@ -58,6 +79,7 @@ export default defineComponent({
   </p>
 	<p>
 	<img v-if="url!=null" :src="url" alt="Girl in a jacket" width="500" height="600">
+	<img v-if="urlgroup!=null" :src="urlgroup" alt="Girl in a jacket" width="500" height="600">
 
 	</p>
 </template>
