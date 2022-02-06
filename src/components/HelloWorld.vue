@@ -15,8 +15,8 @@ export default defineComponent({
 			count: <Mime> {
 				hello:10,
 			},
-			url: <String|null>null,
-			urlgroup: <String|null>null,
+			url: "",
+			urlgroup: "",
 			Getid: <String|null>null,// it is a v-model
 			GetGroup: <String|null>null// it is a v-model
 		}
@@ -32,16 +32,16 @@ export default defineComponent({
 			console.log("ssss");
 		},
 		updateId () {
-			if(this.Getid == "") {
-				this.url = null;
+			if(this.Getid == null) {
+				this.url = '';
 			}else {
 				//this.url = `https://q1.qlogo.cn/g?b=qq&s=140&nk=${this.Getid}`;
 				this.url = headpicture(this.Getid as string);
 			}
 		},
 		updateGroup () {
-			if(this.GetGroup == "") {
-				this.urlgroup = null;
+			if(this.GetGroup == null) {
+				this.urlgroup = "";
 			}else {
 				//this.url = `https://q1.qlogo.cn/g?b=qq&s=140&nk=${this.Getid}`;
 				this.urlgroup = grouppicture(this.GetGroup as string);
@@ -52,39 +52,67 @@ export default defineComponent({
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
-	<p>
-		<strong>id:</strong>
-		<input
-			v-model="Getid"
-			id="qq"
-			placeholder="Eg 123456789"
-		/> 
-		<button type="button" @click="updateId">confirm</button>
-	</p>
-	<p>
-		<strong>id:</strong>
-		<input
-			v-model="GetGroup"
-			id="group"
-			placeholder="Eg 123456789"
-		/> 
-		<button type="button" @click="updateGroup">confirm</button>
-	</p>
-  <button type="button" @click="updateData">count is: {{ count.hello }}</button>
-  <button type="button" @click="cove">cove</button>
-  <p>
-    Edit
-    <code>components/HelloWorld.vue</code> to test hot module replacement.
-  </p>
-	<p>
-	<img v-if="url!=null" :src="url" alt="Girl in a jacket" width="500" height="600">
-	<img v-if="urlgroup!=null" :src="urlgroup" alt="Girl in a jacket" width="500" height="600">
-
-	</p>
+	<div class="MainWindows">
+		<div class="tab">
+			<button> Tokio </button>
+			<button> Tokio </button>
+			<button> Tokio </button>
+			<button> Tokio </button>
+			<button> Tokio </button>
+			<button> Tokio </button>
+			<button> Tokio </button>
+			<button> Tokio </button>
+			<button> Tokio </button>
+		</div>
+		<div class="tabcontent">
+			<div class="message">
+				<h1>{{ msg }}</h1>
+				<p>
+					<strong>id:</strong>
+					<input
+						v-model="Getid"
+						id="qq"
+						placeholder="Eg 123456789"
+					/> 
+					<button type="button" @click="updateId">confirm</button>
+				</p>
+				<p>
+					<strong>id:</strong>
+					<input
+						v-model="GetGroup"
+						id="group"
+						placeholder="Eg 123456789"
+					/> 
+					<button type="button" @click="updateGroup">confirm</button>
+				</p>
+				<!-- </div> -->
+				<!-- <div class="box2"> -->
+	  		<button type="button" @click="updateData">count is: {{ count.hello }}</button>
+	  		<button type="button" @click="cove">cove</button>
+	  		<p>
+	  		  Edit
+	  		  <code>components/HelloWorld.vue</code> to test hot module replacement.
+	  		</p>
+				<p>
+				<img v-if="url!=''" v-bind:src="url" alt="Girl in a jacket" width="500" height="600">
+				<img v-if="urlgroup!=''" v-bind:src="urlgroup" alt="Girl in a jacket" width="500" height="600">
+	
+				</p>
+			</div>
+			<div class="input">
+				<input
+					v-model="Getid"
+					id="qq"
+					placeholder="Eg 123456789"
+				/> 
+				<button type="button" @click="updateId">confirm</button>
+				</div>
+		</div>
+	</div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+@import "css/sidebar.scss";
 a {
   color: #42b983;
 }
