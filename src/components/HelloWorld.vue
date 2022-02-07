@@ -69,7 +69,7 @@ export default defineComponent({
 				:style="[recent==index ? selected : {}]"
 				@click="changeindex(index)"
 			>
-				{{ name }}
+				<span>{{ name }}</span>
 			</button>
 
 		</div>

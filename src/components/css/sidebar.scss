@@ -28,6 +28,7 @@
 		overflow: scroll;
 		button {
 			display: block;
+			//display: inline-block;
 			background-color: inherit;
 			color: black;
 			padding: 22px 16px;
@@ -37,10 +38,32 @@
 			text-align: left;
 			cursor: pointer;
 			font-size: 20px;
+			//vertical-align:middle;
 			&:hover {
 				color: green;
 				background-color: grey;
+				span {
+					padding-right: 25px;
+					&:after {
+					  opacity: 1;
+					  right: 0;
+					}
+				}
 			}
+			span {
+				cursor: pointer;
+ 				display: inline-block;
+ 				position: relative;
+ 				transition: 0.5s;
+				&:after{
+					content: '\00bb';
+					position: absolute;
+					opacity: 0;
+					 top: 0;
+					right: -20px;
+					transition: 0.5s;
+ 				}
+			}				
 		}
 	}
 	.tabcontent {
