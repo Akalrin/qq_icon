@@ -15,10 +15,16 @@ export default defineComponent({
 			count: <Mime> {
 				hello:10,
 			},
+			buttons: ["Tokio","Tokio","Banana","Shanghai","Shenzhen","Hebei"],
+			recent:0,
 			url: "",
 			urlgroup: "",
 			Getid: <String|null>null,// it is a v-model
-			GetGroup: <String|null>null// it is a v-model
+			GetGroup: <String|null>null,// it is a v-model
+			selected: {
+				color: 'blue',
+				"background-color": "pink",
+			}
 		}
 	},
 	methods: {
@@ -46,6 +52,9 @@ export default defineComponent({
 				//this.url = `https://q1.qlogo.cn/g?b=qq&s=140&nk=${this.Getid}`;
 				this.urlgroup = grouppicture(this.GetGroup as string);
 			}
+		},
+		changeindex(input:number) {
+			this.recent = input;
 		}
 	}
 })
@@ -54,15 +63,15 @@ export default defineComponent({
 <template>
 	<div class="MainWindows">
 		<div class="tab">
-			<button> Tokio </button>
-			<button> Tokio </button>
-			<button> Tokio </button>
-			<button> Tokio </button>
-			<button> Tokio </button>
-			<button> Tokio </button>
-			<button> Tokio </button>
-			<button> Tokio </button>
-			<button> Tokio </button>
+			<button 
+				v-for="(name,index) in buttons"
+				v-bind:key="index"
+				:style="[recent==index ? selected : {}]"
+				@click="changeindex(index)"
+			>
+				{{ name }}
+			</button>
+
 		</div>
 		<div class="tabcontent">
 			<div class="message">
